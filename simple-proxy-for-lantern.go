@@ -19,14 +19,13 @@ func handleClientRequest(client net.Conn) {
 	defer client.Close()
 
 	log.Println("ll:net.Dial:", config.Proxy+":"+strconv.Itoa(config.ProxyPort))
-	//获得了请求的host和port，就开始拨号吧
+
 	server, err := net.Dial("tcp", config.Proxy+":"+strconv.Itoa(config.ProxyPort))
 	if err != nil {
 		log.Println("ll:net.Dial:err:", err)
 		return
 	}
 
-	//进行转发
 	go io.Copy(server, client)
 	io.Copy(client, server)
 }
