@@ -1,0 +1,8 @@
+{
+    "server":"0.0.0.0",
+    "server_port":10086,
+    "client":"",
+    "password":"",
+    "proxy": "192.168.1.123",
+    "proxy_port":51769
+}
